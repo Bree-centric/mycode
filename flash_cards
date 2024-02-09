@@ -1,0 +1,72 @@
+class Flashcard:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+class FlashcardApp:
+    def __init__(self):
+        self.flashcards = []
+
+    def add_flashcard(self, flashcard):
+        self.flashcards.append(flashcard)
+
+    def view_flashcards(self):
+        if not self.flashcards:
+            print("No flashcards found.")
+        else:
+            for i, flashcard in enumerate(self.flashcards, start=1):
+                print(f"{i}. Question: {flashcard.question}")
+
+    def quiz(self):
+        if not self.flashcards:
+            print("No flashcards found. Add flashcards to quiz yourself.")
+            return
+
+        score = 0
+        total_questions = len(self.flashcards)
+
+        for flashcard in self.flashcards:
+            answer = input(f"Question: {flashcard.question}\nYour answer: ")
+            if answer.strip().lower() == flashcard.answer.strip().lower():
+                print("Correct!")
+                score += 1
+            else:
+                print(f"Wrong! The correct answer is: {flashcard.answer}")
+
+        print(f"You got {score} out of {total_questions} questions correct.")
+
+def main():
+    flashcard_app = FlashcardApp()
+
+    while True:
+        print("\nFLASHCARD APP MENU:")
+        print("1. Add Flashcard")
+        print("2. View Flashcards")
+        print("3. Quiz Yourself")
+        print("4. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            question = input("Enter the question: ")
+            answer = input("Enter the answer: ")
+            flashcard = Flashcard(question, answer)
+            flashcard_app.add_flashcard(flashcard)
+            print("Flashcard added successfully!")
+
+        elif choice == '2':
+            flashcard_app.view_flashcards()
+
+        elif choice == '3':
+            flashcard_app.quiz()
+
+        elif choice == '4':
+            print("Exiting...")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+

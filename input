@@ -1,0 +1,11 @@
+# Prompt user for name
+name = input('Breanna')
+
+# Prompt user for day
+
+day = input('Tuesday")
+
+# Print the sentence
+
+print(Hello, {name}! Happy 
+
