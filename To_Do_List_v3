@@ -1,0 +1,91 @@
+from datetime import datetime
+
+class Task:
+    def __init__(self, title, priority, due_date):
+        self.title = title
+        self.priority = priority
+        self.due_date = due_date
+        self.completed = False
+
+    def __str__(self):
+        if not self.completed:
+            return f"\033[1;35mTitle: {self.title}, Priority: {self.priority}, Due Date: {self.due_date}, Status: Not completed. Do it, Do it now!!\033[0m"
+        else:
+            return f"\033[1;35mTitle: {self.title}, Priority: {self.priority}, Due Date: {self.due_date}, Status: Completed. Now it is time for wine!\033[0m"
+
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+
+    def view_tasks(self):
+        if self.tasks:
+            print("\n\033[1;35m--- TASK LIST ---\033[0m")
+            for i, task in enumerate(self.tasks, start=1):
+                print(f"{i}. {task}")
+            print("\033[1;35m-----------------\033[0m")
+        else:
+            print("\033[1;33mNo tasks found.\033[0m")
+
+    def complete_task(self, index):
+        self.tasks[index].completed = True
+
+    def delete_task(self, index):
+        del self.tasks[index]
+
+def main():
+    todo_list = ToDoList()
+
+    while True:
+        print("\n\033[1;35mTODO LIST MENU\033[0m")
+        print("1. Add Task")
+        print("2. View Tasks")
+        print("3. Complete Task")
+        print("4. Delete Task")
+        print("5. Exit")
+
+        choice = input("\033[1;35mEnter your choice: \033[0m")
+
+        if choice == '1':
+            title = input("\033[1;35mEnter task title: \033[0m")
+            priority = input("\033[1;35mEnter task priority (Low/Medium/High): \033[0m")
+            due_date = input("\033[1;35mEnter task due date (MM-DD-YY): \033[0m")
+            try:
+                due_date = datetime.strptime(due_date, "%m-%d-%y").date()
+                task = Task(title, priority, due_date)
+                todo_list.add_task(task)
+                print("\033[1;35mTask added successfully!\033[0m")
+            except ValueError:
+                print("\033[1;35mInvalid date format! Please enter date in MM-DD-YY format.\033[0m")
+
+        elif choice == '2':
+            todo_list.view_tasks()
+
+        elif choice == '3':
+            index = int(input("\033[1;35mEnter the index of the task you want to complete: \033[0m")) - 1
+            if 0 <= index < len(todo_list.tasks):
+                todo_list.complete_task(index)
+                print("\033[1;35mTask marked as completed. Now it is time for wine!\033[0m")
+            else:
+                print("\033[1;35mInvalid index.\033[0m")
+
+        elif choice == '4':
+            index = int(input("\033[1;35mEnter the index of the task you want to delete: \033[0m")) - 1
+            if 0 <= index < len(todo_list.tasks):
+                todo_list.delete_task(index)
+                print("\033[1;35mTask deleted successfully.\033[0m")
+            else:
+                print("\033[1;35mInvalid index.\033[0m")
+
+        elif choice == '5':
+            print("\033[1;33mExiting...\033[0m")
+            break
+
+        else:
+            print("\033[1;35mInvalid choice. Please try again.\033[0m")
+
+if __name__ == "__main__":
+    main()
+

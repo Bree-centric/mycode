@@ -1,0 +1,20 @@
+import requests
+
+def main():
+    pokenum = input("Pick a number between 1 and 151!\n>")
+    pokeapi = requests.get("https://pokeapi.co/api/v2/pokemon/" + pokenum).json()
+
+    # Part 1: Slicing (NO for loop!)
+    front_default_url = pokeapi["sprites"]["front_default"]
+    print("URL to front_default image:", front_default_url)
+
+    # Part 2: Slicing WITH a for loop!
+    print("\nMoves of the selected Pokemon:")
+    for move in pokeapi["moves"]:
+        move_name = move["move"]["name"]
+        print(move_name)
+
+if __name__ == "__main__":
+    main()
+
+
