@@ -1,0 +1,30 @@
+{
+  "version": "2.6.1-RC1",
+  "summary": {
+    "title": "Gorham_CSD370",
+    "owner": "Breanna Gorham",
+    "description": "",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Chandra Bobba"
+      }
+    ],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "CSD370",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.1-RC1",
+        "cells": []
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 0
+  }
+}
