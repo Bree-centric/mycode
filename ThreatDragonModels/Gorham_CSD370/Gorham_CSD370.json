@@ -23,7 +23,7 @@
         "cells": [
           {
             "position": {
-              "x": 349.99999999999704,
+              "x": 340,
               "y": 110.00000000000449
             },
             "size": {
@@ -32,8 +32,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "62250650-a41f-4557-a944-3bf482351dda",
             "zIndex": -1,
+            "id": "62250650-a41f-4557-a944-3bf482351dda",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Trust Boundary",
@@ -41,10 +41,11 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "38ad8d43-6d2c-4f75-93b7-f7c0fbecdab6",
-                "c54a71cb-23c6-4d6c-bb0e-e9f415dd61f7"
+                "11d3d77a-4e57-4100-95f6-108d588d4f0a",
+                "38ad8d43-6d2c-4f75-93b7-f7c0fbecdab6"
               ],
               "containedElements": [
+                "1cecdf02-d821-42a0-a24e-62f2aed9839c",
                 "9430e561-11d2-4429-8586-bca8477e9e97"
               ]
             }
@@ -70,6 +71,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -153,7 +155,6 @@
               ]
             },
             "id": "d3def5ca-d3e3-412e-b8c0-ba448f0a91cc",
-            "zIndex": 1,
             "data": {
               "type": "tm.Process",
               "name": "Browser\nActive Plug-ins",
@@ -190,6 +191,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -273,7 +275,6 @@
               ]
             },
             "id": "1cecdf02-d821-42a0-a24e-62f2aed9839c",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "Web Server",
@@ -315,6 +316,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -398,7 +400,6 @@
               ]
             },
             "id": "9430e561-11d2-4429-8586-bca8477e9e97",
-            "zIndex": 3,
             "data": {
               "type": "tm.Store",
               "name": "SQL Database",
@@ -419,8 +420,8 @@
                   "status": "Mitigated",
                   "severity": "Low",
                   "type": "Repudiation",
-                  "description": "Providers may deny making changes to the SQL Database if logging and auditing are not enabled. Without proper records, it becomes difficult to trace who accessed or modified.",
-                  "mitigation": "Enable database audit logs, user activity monitoring, and change tracking.",
+                  "description": "Lack of personnel tracking within database",
+                  "mitigation": "activity user monitoring",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
@@ -455,7 +456,7 @@
               ],
               "threatFrequency": {
                 "tampering": 1,
-                "repudiation": 1,
+                "repudiation": 2,
                 "informationDisclosure": 0,
                 "denialOfService": 1
               }
@@ -499,7 +500,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "62250650-a41f-4557-a944-3bf482351dda"
+              ]
             },
             "labels": [
               "HTTPS"
@@ -657,9 +660,7 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "62250650-a41f-4557-a944-3bf482351dda"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "DB Responses"
